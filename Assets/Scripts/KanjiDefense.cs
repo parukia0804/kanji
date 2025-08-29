@@ -10,6 +10,8 @@ public class KanjiDefense : MonoBehaviour
 
     private float attackTimer;
 
+    [SerializeField] Sprite[] possibleSprites;//形の違うスプライトを登録
+
     void Update()
     {
         attackTimer += Time.deltaTime;
