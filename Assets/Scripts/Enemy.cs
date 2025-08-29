@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
     public int hp = 5;
     public float speed = 2f;
     private Transform core;
+    bool isAttacking = false;
 
     void Start()
     {
@@ -13,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (core == null) return;
+        if (core == null || isAttacking == true) return;
 
         Vector2 dir = (core.position - transform.position).normalized;
         transform.Translate(dir * speed * Time.deltaTime);
@@ -30,6 +31,11 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Defence"))
+        {
+            isAttacking = true;
+        }
+
         if (other.CompareTag("Core"))
         {
             Core coreComp = other.GetComponentInParent<Core>();
