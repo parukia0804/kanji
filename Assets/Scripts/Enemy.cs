@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
     public int hp = 5;
     public float speed = 2f;
     private Transform core;
+    bool isAttacking = false;
 
     void Start()
     {
@@ -17,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (core == null) return;
+        if (core == null || isAttacking == true) return;
 
         Collider2D col = GetComponent<Collider2D>();
         Vector2 origin = transform.position;
@@ -43,6 +44,11 @@ public class Enemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // CoreÇ…Ç‘Ç¬Ç©Ç¡ÇΩèÍçá
+        if (other.CompareTag("Defence"))
+        {
+            isAttacking = true;
+        }
+
         if (other.CompareTag("Core"))
         {
             Core coreComp = other.GetComponentInParent<Core>();
