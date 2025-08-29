@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Core"))
         {
-            Core coreComp = other.GetComponent<Core>();
+            Core coreComp = other.GetComponentInParent<Core>();
             if (coreComp != null)
             {
                 coreComp.TakeDamage(1);
