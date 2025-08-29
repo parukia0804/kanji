@@ -17,6 +17,9 @@ public class CreateController : MonoBehaviour
     private List<GameObject> buttons = new List<GameObject>();
     private List<GameObject> kanjis = new List<GameObject>();
 
+    private GameObject currentKanji; // 操作中のオブジェクト
+    private bool isPlaced = false;   // 右クリックで固定されたか
+
 
 
 
@@ -30,10 +33,33 @@ public class CreateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // 現在選択中の漢字があればマウスに追従
+        if (currentKanji != null && !isPlaced)
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0f; // 2Dなので Z は 0
+
+            currentKanji.transform.position = mousePos;
+
+            // 右クリックで固定
+            if (Input.GetMouseButtonDown(1))
+            {
+                isPlaced = true;
+                Debug.Log($"漢字 {currentKanji.name} を固定しました！");
+            }
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             SelectObject();
         }
+
+        
+
+        
+
+
     }
 
     void SelectObject()
@@ -64,7 +90,15 @@ public class CreateController : MonoBehaviour
                 int num = btn.buttonNumber; // ここで参照できる
                 Debug.Log("このボタンの番号: " + num);
 
-                SetKanji(num);
+                resetKanji();
+
+                currentKanji = kanjiPrefabs[num];
+
+                Vector3 mousePosa = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePosa.z = 0f;
+                currentKanji = Instantiate(kanjiPrefabs[num], mousePosa, Quaternion.identity);
+
+
             }
             else
             {
@@ -112,7 +146,7 @@ public class CreateController : MonoBehaviour
         }
     }
 
-    void SetKanji(int knum)
+    void resetKanji()
     {
         // ボタンを破棄
         foreach (var btn in buttons)
