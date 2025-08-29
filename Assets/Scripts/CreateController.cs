@@ -140,7 +140,7 @@ public class CreateController : MonoBehaviour
             Quaternion.identity                   // ‰ñ“]‚È‚µ
             );
 
-            kanji.transform.localScale = new Vector3(0.2f, 0.2f, 1f);
+            kanji.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
             kanjis.Add(kanji); // ƒŠƒXƒg‚É•Û‘¶
         }
