@@ -9,13 +9,22 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         core = GameObject.FindWithTag("Core").transform;
+        
     }
 
     void Update()
     {
         if (core == null) return;
 
-        Vector2 dir = (core.position - transform.position).normalized;
+        Collider2D col = GetComponent<Collider2D>();
+        Vector2 origin = transform.position;
+
+        if (col != null)
+        {
+            origin = col.bounds.center;
+        }
+
+        Vector2 dir = ((Vector2)core.position - origin).normalized;
         transform.Translate(dir * speed * Time.deltaTime);
     }
 
