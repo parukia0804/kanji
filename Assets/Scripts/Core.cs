@@ -14,7 +14,7 @@ public class Core : MonoBehaviour
         if (hp <= 0)
         {
             Debug.Log("ゲームオーバー");
-            // ここでリトライやシーンリセット処理を追加
+            
         }
     }
 

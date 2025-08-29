@@ -35,14 +35,17 @@ public class KanjiDefense : MonoBehaviour
     }
 
     // 敵がぶつかってきたときに耐久値を減らす
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             durability--;
+            Debug.Log("防御オブジェクトが攻撃された！ 残り耐久値: " + durability);
+
             if (durability <= 0)
             {
-                Destroy(gameObject); // 消滅
+                Debug.Log("防御オブジェクトが破壊された！");
+                Destroy(gameObject);
             }
         }
     }
