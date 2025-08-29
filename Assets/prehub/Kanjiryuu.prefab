@@ -372,3 +372,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   hp: 5
   speed: 2
+  attack: 1
+  isAttacking: 0

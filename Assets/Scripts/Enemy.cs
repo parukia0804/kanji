@@ -4,8 +4,9 @@ public class Enemy : MonoBehaviour
 {
     public int hp = 5;
     public float speed = 2f;
+    public int attack = 1;
     private Transform core;
-    bool isAttacking = false;
+    public bool isAttacking = false;
 
     void Start()
     {
@@ -15,7 +16,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (core == null || isAttacking == true) return;
+        if (core == null || isAttacking == true) return;//
 
         Collider2D col = GetComponent<Collider2D>();
         Vector2 origin = transform.position;
@@ -53,6 +54,14 @@ public class Enemy : MonoBehaviour
                 coreComp.TakeDamage(1);
             }
             Destroy(gameObject);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Defence"))
+        {
+            isAttacking = false;
         }
     }
 }

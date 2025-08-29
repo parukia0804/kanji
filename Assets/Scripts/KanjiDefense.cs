@@ -1,12 +1,17 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class KanjiDefense : MonoBehaviour
 {
-    public int durability = 10;      // ‘Ï‹v’l
-    public int fireDamage = 1;       // ‰Î‘®«ƒ_ƒ[ƒW
-    public float attackRange = 3f;   // ”ÍˆÍ
+    public int durability = 10;       // ‘Ï‹v’l
+    public int fireDamage = 1;        // ‰Î‘®«ƒ_ƒ[ƒW
+    public float attackRange = 3f;    // ”ÍˆÍ
     public float attackInterval = 1f; // UŒ‚ŠÔŠu
+
+    public float damageInterval = 1.0f; // ƒ_ƒ[ƒW‚ğó‚¯‚éŠÔŠui•bj
+    private List<Enemy> enemies = new List<Enemy>();
+    private Coroutine damageCoroutine;
 
     private float attackTimer;
 
@@ -14,7 +19,7 @@ public class KanjiDefense : MonoBehaviour
     {
         attackTimer += Time.deltaTime;
 
-        // ‰Î‘®«UŒ‚i”ÍˆÍ“à‚Ì“G‚Éƒ_ƒ[ƒWj
+        // ”ÍˆÍUŒ‚i‰Šj
         if (attackTimer >= attackInterval)
         {
             attackTimer = 0f;
@@ -34,16 +39,75 @@ public class KanjiDefense : MonoBehaviour
         }
     }
 
-    // “G‚ª‚Ô‚Â‚©‚Á‚Ä‚«‚½‚Æ‚«‚É‘Ï‹v’l‚ğŒ¸‚ç‚·
-    void OnCollisionEnter2D(Collision2D collision)
+    // “G‚ª‚Ô‚Â‚©‚Á‚Ä‚«‚½‚Æ‚«
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            durability--;
-            if (durability <= 0)
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null && !enemies.Contains(enemy))
             {
-                Destroy(gameObject); // Á–Å
+                enemies.Add(enemy);
+
+                // ‚Ô‚Â‚©‚Á‚½uŠÔ‚É‚àƒ_ƒ[ƒW
+                if (enemy.isAttacking)
+                {
+                    ApplyDamage(enemy);
+                }
+
+                // ƒRƒ‹[ƒ`ƒ“ŠJn
+                if (damageCoroutine == null)
+                {
+                    damageCoroutine = StartCoroutine(DamageOverTime());
+                }
             }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null && enemies.Contains(enemy))
+            {
+                enemies.Remove(enemy);
+
+                // “G‚ª‚¢‚È‚­‚È‚Á‚½‚ç~‚ß‚é
+                if (enemies.Count == 0 && damageCoroutine != null)
+                {
+                    StopCoroutine(damageCoroutine);
+                    damageCoroutine = null;
+                }
+            }
+        }
+    }
+
+    IEnumerator DamageOverTime()
+    {
+        while (true)
+        {
+            foreach (Enemy enemy in enemies)
+            {
+                if (enemy != null && enemy.isAttacking)
+                {
+                    ApplyDamage(enemy);
+                }
+            }
+
+            yield return new WaitForSeconds(damageInterval);
+        }
+    }
+
+    void ApplyDamage(Enemy enemy)
+    {
+        durability -= enemy.attack;
+        Debug.Log("•Ç‚Ì‘Ï‹v—Í: " + durability + " (UŒ‚: " + enemy.attack + ")");
+
+        if (durability <= 0)
+        {
+            Debug.Log("•Ç‚ª”j‰ó‚³‚ê‚½I");
+            Destroy(gameObject);
         }
     }
 
