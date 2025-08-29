@@ -2,21 +2,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int hp = 5;
-    public float speed = 2f;
-    private Transform core;
-
-    void Start()
-    {
-        core = GameObject.FindWithTag("Core").transform;
-    }
+    public int hp = 3;
 
     void Update()
     {
-        if (core == null) return;
-
-        Vector2 dir = (core.position - transform.position).normalized;
-        transform.Translate(dir * speed * Time.deltaTime);
+        // テスト用にスペースでダメージ
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(1);
+        }
     }
 
     public void TakeDamage(int dmg)
@@ -24,20 +18,14 @@ public class Enemy : MonoBehaviour
         hp -= dmg;
         if (hp <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void Die()
     {
-        if (other.CompareTag("Core"))
-        {
-            Core coreComp = other.GetComponent<Core>();
-            if (coreComp != null)
-            {
-                coreComp.TakeDamage(1);
-            }
-            Destroy(gameObject);
-        }
+        Debug.Log("敵が倒された");
+        WaveManager.Instance.OnEnemyKilled();
+        Destroy(gameObject);
     }
 }

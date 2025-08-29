@@ -1,41 +1,59 @@
+using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 
 public class WaveManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-    public Transform[] spawnPoints;
-    public int enemiesPerWave = 5;
-    public float spawnInterval = 1f;
-    public int totalWaves = 3;
+    public static WaveManager Instance; // シングルトン
 
-    private int currentWave = 0;
-
-    void Start()
+    [System.Serializable]
+    public class Wave
     {
-        StartCoroutine(SpawnWave());
+        public GameObject enemyPrefab;
+        public int enemyCount;
+        public float spawnInterval = 1f;
     }
 
-    IEnumerator SpawnWave()
+    public List<Wave> waves = new List<Wave>();
+    private int currentWaveIndex = -1;
+    private int aliveEnemies = 0;
+
+    private void Awake()
     {
-        while (currentWave < totalWaves)
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
+
+    public void StartNextWave()
+    {
+        if (currentWaveIndex + 1 >= waves.Count)
         {
-            currentWave++;
-            Debug.Log("Wave " + currentWave + " 開始！");
-
-            for (int i = 0; i < enemiesPerWave; i++)
-            {
-                Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-                Instantiate(enemyPrefab, sp.position, Quaternion.identity);
-                yield return new WaitForSeconds(spawnInterval);
-            }
-
-            // ウェーブ終了 → プレイヤーに漢字選択権を与える
-            Debug.Log("Wave " + currentWave + " 終了！");
-
-            yield return new WaitForSeconds(5f); // 次ウェーブまで休憩
+            Debug.Log("全てのウェーブが終了しました！");
+            return;
         }
 
-        Debug.Log("クリア！");
+        currentWaveIndex++;
+        StartCoroutine(SpawnWave(waves[currentWaveIndex]));
+    }
+
+    private System.Collections.IEnumerator SpawnWave(Wave wave)
+    {
+        Debug.Log("Wave " + (currentWaveIndex + 1) + " 開始！");
+        aliveEnemies = wave.enemyCount;
+
+        for (int i = 0; i < wave.enemyCount; i++)
+        {
+            Instantiate(wave.enemyPrefab, new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f)), Quaternion.identity);
+            yield return new WaitForSeconds(wave.spawnInterval);
+        }
+    }
+
+    public void OnEnemyKilled()
+    {
+        aliveEnemies--;
+        if (aliveEnemies <= 0)
+        {
+            Debug.Log("Wave " + (currentWaveIndex + 1) + " 終了！");
+            KanjiPlacementManager.Instance.StartPlacement();
+        }
     }
 }
