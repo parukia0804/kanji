@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eeb05a188aae86458c0b7b8f602faa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core
-  hp: 20
+  hp: 10
 --- !u!212 &1835030687
 SpriteRenderer:
   m_ObjectHideFlags: 0
