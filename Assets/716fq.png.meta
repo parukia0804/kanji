@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 71fa3a9e36727c2419b23eb4d5c9445f
+guid: 8baa162099f603f46b6ce7117b92c5d4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5941242368697207560
-    second: ebrg8_0
+      213: 8601092345958865964
+    second: 716fq_0
   - first:
-      213: 8363560257400879734
-    second: ebrg8_1
+      213: 135550073080482089
+    second: 716fq_1
   - first:
-      213: -6727093911087755778
-    second: ebrg8_2
+      213: 4979152647394032491
+    second: 716fq_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -106,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ebrg8_0
+      name: 716fq_0
       rect:
         serializedVersion: 2
-        x: 1032
-        y: 1544
-        width: 247
-        height: 208
+        x: 673
+        y: 1556
+        width: 997
+        height: 201
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80b82bec478837250800000000000000
-      internalID: 5941242368697207560
+      spriteID: c2c95390be73d5770800000000000000
+      internalID: 8601092345958865964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ebrg8_1
+      name: 716fq_1
       rect:
         serializedVersion: 2
-        x: 908
-        y: 1257
-        width: 236
-        height: 220
+        x: 586
+        y: 1312
+        width: 1159
+        height: 241
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 67a34f7fdb5511470800000000000000
-      internalID: 8363560257400879734
+      spriteID: 9298d33c21291e100800000000000000
+      internalID: 135550073080482089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ebrg8_2
+      name: 716fq_2
       rect:
         serializedVersion: 2
-        x: 941
-        y: 578
-        width: 520
-        height: 960
+        x: 769
+        y: 598
+        width: 980
+        height: 668
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: efdcbe2cabf84a2a0800000000000000
-      internalID: -6727093911087755778
+      spriteID: b6bfd5eb3f0891540800000000000000
+      internalID: 4979152647394032491
       vertices: []
       indices: 
       edges: []
@@ -185,9 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ebrg8_0: 5941242368697207560
-      ebrg8_1: 8363560257400879734
-      ebrg8_2: -6727093911087755778
+      716fq_0: 8601092345958865964
+      716fq_1: 135550073080482089
+      716fq_2: 4979152647394032491
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
