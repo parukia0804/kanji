@@ -386,7 +386,7 @@ MonoBehaviour:
   kanjiPrefabs:
   - {fileID: 2167154486761857094, guid: 85ffb414a8947e24992e82da59c1a05b, type: 3}
   - {fileID: 1885602111904011814, guid: b5e242757f3ed9048bc74d16c2cc01e9, type: 3}
-  - {fileID: 6252130920060003672, guid: 02e3cd3f1e10bad4eb0b5ae919e953ae, type: 3}
+  - {fileID: 1897477671124777410, guid: 6f6c706d450eb594cb8bbc5f381578d4, type: 3}
   - {fileID: 5947237475944018793, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
   - {fileID: 2334913531256770874, guid: 47815181dd2eaa24d93944ce21f72527, type: 3}
   - {fileID: 7269647635335444842, guid: 7af2cdffb3831d842b4688ea7cd996e5, type: 3}
