@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KanjiDefenseGrass : MonoBehaviour
+public class Kanjikusa : MonoBehaviour
 {
     public int durability = 10;          // ‘Ï‹v’l
     public int healAmount = 1;           // ‰ñ•œ—Ê

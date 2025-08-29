@@ -808,67 +808,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1219697593
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1426263195701022056, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_BodyType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576067649683825595, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.43996888
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576067649683825595, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.114557385
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576067649683825595, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576067649683825595, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576067649683825595, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576067649683825595, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576067649683825595, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576067649683825595, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576067649683825595, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1576067649683825595, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5947237475944018793, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
-      propertyPath: m_Name
-      value: Kanjimadare
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dd02e279e9fc19a45acb50e0a21c567a, type: 3}
 --- !u!1 &1318737945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,11 +950,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417022984024000847, guid: 85ffb414a8947e24992e82da59c1a05b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.74
+      value: 1.42
       objectReference: {fileID: 0}
     - target: {fileID: 2417022984024000847, guid: 85ffb414a8947e24992e82da59c1a05b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.25
+      value: -1.31
       objectReference: {fileID: 0}
     - target: {fileID: 2417022984024000847, guid: 85ffb414a8947e24992e82da59c1a05b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1256,11 +1195,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2417022984024000847, guid: 85ffb414a8947e24992e82da59c1a05b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.71
+      value: 1.56
       objectReference: {fileID: 0}
     - target: {fileID: 2417022984024000847, guid: 85ffb414a8947e24992e82da59c1a05b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.68
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 2417022984024000847, guid: 85ffb414a8947e24992e82da59c1a05b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1688,5 +1627,4 @@ SceneRoots:
   - {fileID: 1322912105}
   - {fileID: 189531225}
   - {fileID: 641440537}
-  - {fileID: 1219697593}
   - {fileID: 345651956}

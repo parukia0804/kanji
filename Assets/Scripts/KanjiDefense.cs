@@ -39,11 +39,12 @@ public class KanjiDefense : MonoBehaviour
         }
     }
 
-    // 敵がぶつかってきたとき
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
+
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null && !enemies.Contains(enemy))
             {
@@ -60,6 +61,15 @@ public class KanjiDefense : MonoBehaviour
                 {
                     damageCoroutine = StartCoroutine(DamageOverTime());
                 }
+            }
+            durability--;
+            Debug.Log("防御オブジェクトが攻撃された！ 残り耐久値: " + durability);
+
+            if (durability <= 0)
+            {
+                Debug.Log("防御オブジェクトが破壊された！");
+                Destroy(gameObject);
+
             }
         }
     }

@@ -10,8 +10,11 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        core = GameObject.FindWithTag("Core").transform;
-        
+        GameObject coreObj = GameObject.FindWithTag("Core");
+        if (coreObj != null)
+        {
+            core = coreObj.transform;
+        }
     }
 
     void Update()
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // Coreにぶつかった場合
         if (other.CompareTag("Defence"))
         {
             isAttacking = true;
@@ -52,6 +56,21 @@ public class Enemy : MonoBehaviour
             if (coreComp != null)
             {
                 coreComp.TakeDamage(1);
+            }
+            Destroy(gameObject);
+        }
+
+        // 防御オブジェクトにぶつかった場合
+        if (other.CompareTag("Defense"))
+        {
+            KanjiDefenseGrass defenseComp = other.GetComponentInParent<KanjiDefenseGrass>();
+            if (defenseComp != null)
+            {
+                defenseComp.durability--;
+                if (defenseComp.durability <= 0)
+                {
+                    Destroy(defenseComp.gameObject);
+                }
             }
             Destroy(gameObject);
         }
